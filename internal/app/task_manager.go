@@ -15,10 +15,10 @@ type taskHandler struct {
 	store storage.Storage
 }
 
-func BuildApp() *echo.Echo {
+func BuildApp(store storage.Storage) *echo.Echo {
 	e := echo.New()
 
-	h := &taskHandler{store: storage.NewMemoryStorage()}
+	h := &taskHandler{store: store}
 
 	e.POST("/tasks", h.create)
 	e.GET("/tasks/:id", h.get)

@@ -2,9 +2,12 @@ package storage
 
 import (
 	"context"
+	"errors"
 
 	"task-tracker/internal/dto"
 )
+
+var ErrTaskNotFound = errors.New("task not found")
 
 type Storage interface {
 	CreateTask(context.Context, dto.Task) (dto.Task, error)
